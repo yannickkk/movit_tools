@@ -1,16 +1,16 @@
 ############################Intersect home range and landscape###########################################
-#### author: Yannick Chaval
+#### author: Yannick Chaval, INRA (French National Institute for Agricultural Research), CEFS (Wildlife, Behaviour and Ecology Research Unit)
 #### date: 17-10-2016
-#### target db: db_cefs, use custom shape file to create an home ranges table (dv) and tr_parcellaire_par as landscape information
-#### objet: transform a multipolygon shape file to polygon geometry and intersect with landscape table on db_cefs data base
+#### target db: db_cefs, use custom shape file to create an home ranges table (dv) and tr_parcellaire_par from db_cefs as landscape information and combine them toward news tables
+#### objet: transform a multipolygon shape file to polygon geometry and intersect with a landscape table on db_cefs data base
 #### source file: home range shape file with a geom defined as a polygon  geometry or multi-polygon geometry
-#### output tables: create tables hr (homes ranges potentially multipolygons), hr_u (home ranges group by individuals), t_land_hr_lhr (table containing numeric values of the intersect of each home range with the lanscape), t_land_hr_graph_lhrg (graphical intersection of home ranges and sub-classes of landscape), t_land_hr_graph_grps (graphical intersection of home ranges and classes of landscape)
-#### delete tables: hr, hr_u when they are not usefull anymore 
+#### output tables: create tables hr (homes ranges potentially multipolygons), hr_u (home ranges group by individuals), t_land_hr_lhr (table containing numeric values of tranghe intersect of each home range with the lanscape), t_land_hr_graph_lhrg (graphical intersection of each home range and sub-classes of landscape), t_land_hr_graph_grps (graphical intersection of each home range and classes, defined as grouped sub-classes, of landscape)
+#### delete tables: script will create and delete hr, hr_u when they are not usefull anymore 
 #### Please don't forget to drop your tables when your work is over
-#### repository: https://github.com/yannickkk/movit_tools/landscape_inside_home_ranges
+#### repository source: https://github.com/yannickkk/movit_tools/landscape_inside_home_ranges.R
 #########################################################################################################
 
-###first define 3 R vectors encompassing sub-classes (grd_cat) to gather inside classes of habitat
+###first you have to define 3 R vectors encompassing sub-classes (grd_cat) to gather inside classes of habitat
 humain<-c("bati","chemin","chemin prive","dependance ferme","depot chantier","enclos","jardin","parking","route")
 cultures<-c("eau","jachere","legumineuse","lin","luzerne","maraichage","moutarde","oleoproteagineux","parc arbore","pelouse","polygonacee","prairie","prairie artificielle","prairie naturelle","soja","sorgho","stade foot","terre","tournesol","trefle","trefle+luzerne","verger","vigne","cereale","cereale+colza","cereale+prairie","chanvre","bande enherbe","colza","culture","feverole")
 bois<-c("bois","haie","friche")
