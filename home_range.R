@@ -58,8 +58,8 @@ vert=getverticeshr(ker, percent = per, unin = c("m"),unout = c("ha"))
 
 writeOGR(vert,"Outputs",layer="hr", overwrite_layer=T, driver="ESRI Shapefile")
 
-####à lancer en ligne de commande windows
-"C:\Program Files\PostgreSQL\9.5\bin\shp2pgsql.exe" -s 2154 -I D:\projets\MoveIt\Outputs\nm_dv.shp analyses.dvnm | "C:\Program Files\PostgreSQL\9.5\bin\psql.exe" -p 5432 -h pggeodb.nancy.inra.fr -d db_cefs -U xxxx
+####à lancer en ligne de commande windows, il faut avoir postgresql intallé sur son ordinateur avec l'extension postgis
+"C:\Program Files\PostgreSQL\12\bin\shp2pgsql.exe" -s 2154 -I D:\projets\MoveIt\Outputs\nm_dv.shp temporaire.dvnm | "C:\Program Files\PostgreSQL\12\bin\psql.exe" -p 5432 -h pggeodb.nancy.inra.fr -d db_cefs -U xxxx
 
 
 
