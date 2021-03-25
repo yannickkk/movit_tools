@@ -23,7 +23,7 @@ library(RPostgreSQL)
 con<- dbConnect(PostgreSQL(), host="serveur_adress", dbname="db_name", user="username", password="password")
 user<-"username" ##don't forget this "user_name"
 ###R call shp2pgsql software using cmd command line (valid for windows os), replace the path way by your own for the shape file and the psql software and fill server_adress, db_name and username
-shell("shp2pgsql.exe -s 2154 -I \"pathway_to_shapefile_including_.shp\" \"temporaire\".hr | \"pathway_to_psql_including_.exe\" -p 5432 -h server_adress -d db_name -U username")
+shell("shp2pgsql.exe -s 2154 -I \"pathway_to_shapefile_including_.shp\" temporaire.hr | \"pathway_to_psql_including_.exe\" -p 5432 -h server_adress -d db_name -U username")
 ###rename columns
 dbSendQuery(con, "ALTER TABLE temporaire.hr RENAME COLUMN gid TO id")
 dbSendQuery(con, "ALTER TABLE temporaire.hr RENAME COLUMN names TO hr_names")
