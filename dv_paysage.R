@@ -15,7 +15,7 @@
 #                - de choisir entre domaine annuel et dommaine mensuel.
 #  2- d'installer la couche des domaines vitaux sur la base de données
 #  3- de décrire la composition des domaines vitaux en regroupant les informations du parcellaire annuel de la zone d'étude sous trois catégories (humain, fermé, ouvert)
-#  n.b: le domaine vital d'un animal peu déborder al zone couverte par le parcellaire annuel. En plus du pourcentage de chacune des trois classes décrites ci-dessus dans le domaine vital de l'individu, le script calcule également le pourcentage de recouvrement du domaine vital avec le relevé parcellaire.
+#  n.b: le domaine vital d'un animal peu déborder la zone couverte par le parcellaire annuel. En plus du pourcentage de chacune des trois classes décrites ci-dessus dans le domaine vital de l'individu, le script calcule également le pourcentage de recouvrement du domaine vital avec le relevé parcellaire.
 #  Documentation:
 #
 #
