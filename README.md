@@ -1,11 +1,11 @@
 # movit_tools
 tools for the members of the movit project
 
-A -calcul_distance_points_lignes.sql
+A -**calcul_distance_points_lignes.sql**
 
 permet de calculer la distance la plus courte entre un point GPS et un élément du paysage dans un rayon (par défaut de 5km) autour du point.
 
-B- dv_paysage.R
+B-**dv_paysage.R**
 
 Est une version plus aboutie des deux scripts suivant. Il permet:
 
@@ -30,10 +30,10 @@ Est une version plus aboutie des deux scripts suivant. Il permet:
   
   n.b: le domaine vital d'un animal peu déborder la zone couverte par le parcellaire annuel. En plus du pourcentage de chacune des trois classes décrites ci-dessus dans le domaine vital de l'individu, le script calcule également le pourcentage de recouvrement du domaine vital avec le relevé parcellaire.
   
-C- Script home_range.R
+C- **Script home_range.R**
 
 permet à partir des ani_etiq des individus de calculer leur domaine vitaux annuels
 
-D- home_range_and_landscape.R
+D- **home_range_and_landscape.R**
 
 permet de calculer la compositions paysagères des domaines vitaux calculés par le script précédent.
