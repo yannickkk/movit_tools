@@ -1,6 +1,14 @@
 # movit_tools
 tools for the members of the movit project
 
+A -**Classification_Delphine_12_04_2018.csv**
+
+Classification des suivi d'animaux suivant si le statut de l'animal. Ce fichier est utilisé par le script dv_paysage pour filtrer les disperseurs.
+**DN**: disperseurs pour lesquels on n'a pas de doutes sur la dispersion
+**DF**: disperseurs flous, qui sont soit des disperseurs soit des individus observant une tactique multi-range. 
+**P**: philopatriques.
+**PD**: pseudo-disperseurs.
+
 A -**calcul_distance_points_lignes.sql**
 
 permet de calculer la distance la plus courte entre un point GPS et un élément du paysage dans un rayon (par défaut de 5km) autour du point.
