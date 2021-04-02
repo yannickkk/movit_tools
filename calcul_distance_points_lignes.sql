@@ -2,7 +2,7 @@
 --base de donnees: bd_cefs
 --tables/views utilisées : v_aniposi_gpsgsmv_aniposi_gpsgsm
 --						   env_data.topo_17_route_emprise_disp
--- le script lie les deux table et calcule la distance la plus courte entre chaque point GPS et le réseau routier (chaîne de caractère qui contient 'Route' dans le champ nature de la couche IGN) dans un rayon de 5 km autour -- de celui-ci
+-- le script lie les deux tables et calcule la distance la plus courte entre chaque point GPS et le réseau routier (chaîne de caractère qui contient 'Route' dans le champ nature de la couche IGN) dans un rayon de 5 km autour -- de celui-ci
 
 select cpos_id, ani_id, ani_etiq, cap_bague, cap_annee_suivi, pos_distance_route,
  closest_road.dist_route, 
