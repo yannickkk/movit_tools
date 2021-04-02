@@ -4,9 +4,13 @@ tools for the members of the movit project
 A- **Classification_Delphine_12_04_2018.csv**
 
 Classification des suivis d'animaux suivant la tactique de mouvement des animaux subadultes (yearling). Ce fichier peut être utilisé par le script dv_paysage.R pour filtrer les disperseurs.
-**DN**: disperseurs pour lesquels on n'a pas de doutes sur la dispersion
-**DF**: disperseurs flous, qui sont soit des disperseurs soit des individus observant une tactique multi-range. 
+
+**DN**: disperseurs pour lesquels on n'a pas de doutes sur la dispersion;
+
+**DF**: disperseurs flous, qui sont soit des disperseurs soit des individus observant une tactique multi-range.
+
 **P**: philopatriques.
+
 **PD**: pseudo-disperseurs.
 
 B- **calcul_distance_points_lignes.sql**
