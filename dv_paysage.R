@@ -326,7 +326,7 @@ if (length(enl) > 0) {dat[-which(dat[,cap] %in% enl),c("pos_x_corrige","pos_y_co
     verti<-append(verti,vert)
     }
  verti<-verti[2:length(verti)]
- if (length(verti)>1) {verti<- do.call(bind, verti)} else {verti<-verti[[1]]}
+ if (length(verti)>1) {verti<- do.call(rbind, verti)} else {verti<-verti[[1]]}
  is.projected(verti)
 
 setwd(path)
