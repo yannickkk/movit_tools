@@ -9,6 +9,7 @@ library(rgdal)
 library(RPostgreSQL)
 library(stringr)
 library(shapefiles)
+library(sf)
 
 ############################################################################
 # Import data
@@ -43,8 +44,13 @@ spatial$posy=ifelse(is.na(spatial$pos_y_corrige)=="FALSE",spatial$pos_y_corrige,
 spat=subset(spatial, is.na(posx)=="FALSE" & cpos_prog6heure=="TRUE")
 
 coordinates(spat) <- c("posx","posy")
-crs.LIII<-CRS("+init=epsg:27583")
-crs.L93<-CRS("+init=epsg:2154")
+#crs.LIII<-CRS("+init=epsg:27583")
+wkt <- sf::st_crs(27583)[[2]]
+crs.LIII <-sp::CRS(wkt)
+#crs.L93<-CRS("+init=epsg:2154")
+wkt <- sf::st_crs(2154)[[2]]
+crs.L93 <-sp::CRS(wkt)
+
 proj4string(spat) <- crs.LIII
 spat<-spTransform(spat, crs.L93)
 
