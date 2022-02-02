@@ -471,7 +471,7 @@ dbSendQuery(con, paste0("Comment on table temporaire.",utilisateur,"_t_hab_dv_hd
 dbSendQuery(con, paste0("Comment on table temporaire.",utilisateur,"_t_hab_dv_hdv IS 'Pour ",utilisateur," table de visualisation de l''intersect entre les domaines vitaux annuels (kernel90, href par defaut) des adultes et yearling et les assolements correspondant a l''annee de suivi simplifie en milieu boises, urbain et cultures'"))
 
 ############on renomme les tables pour qu'elles contiennent la valeur du kernel
-dv_period == "mensuel" {
+if (dv_period == "mensuel") {
 dbSendQuery(con, paste0("alter table temporaire.",utilisateur,"_t_hab_dv_hdv rename to ",utilisateur,"_t_hab_dv_ker",kerval,"_hdv_month"))
 dbSendQuery(con, paste0("alter table temporaire.",utilisateur,"_t_hab_dv_hdv_graph rename to ",utilisateur,"_t_hab_dv_ker",kerval,"_hdvv_graph_month"))
 dbSendQuery(con, paste0("alter table temporaire.",utilisateur,"_t_hab_dv_hdv_graph_grps rename to ",utilisateur,"_t_hab_dv_ker",kerval,"_hdvv_graph_grps_month"))
