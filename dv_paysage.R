@@ -371,7 +371,7 @@ dbSendQuery(con, paste0("ALTER TABLE temporaire.",utilisateur,"_t_hab_dv_hdv ADD
 dbSendQuery(con, paste0("ALTER TABLE temporaire.",utilisateur,"_t_hab_dv_hdv ADD COLUMN hdv_surf_bois text"))
 
 dbSendQuery(con, paste0("COMMENT ON COLUMN temporaire.",utilisateur,"_t_hab_dv_hdv.hdv_surf_humain IS 'bati,chemin,chemin prive,dependance ferme,depot chantier,enclos,jardin,parking,route\'"))
-dbSendQuery(con, paste0("COMMENT ON COLUMN temporaire.",utilisateur,"_t_hab_dv_hdv.hdv_surf_cultures IS 'jachere,legumineuse,lin,luzerne,maraichage,moutarde,non renseigne,oleoproteagineux,parc arbore,pelouse,polygonacee,prairie,prairie artificielle,prairie naturelle,soja,sorgho,stade foot,terre,tournesol,trefle,trefle+luzerne,verger,vigne,cereale,cereale+colza,cereale+prairie,chanvre,bande enherbe,colza,culture,eau,feverole\'"))
+dbSendQuery(con, paste0("COMMENT ON COLUMN temporaire.",utilisateur,"_t_hab_dv_hdv.hdv_surf_cultures IS 'jachere,legumineuse,lin,luzerne,maraichage,moutarde,autre culture,oleoproteagineux,parc arbore,pelouse,polygonacee,prairie,prairie artificielle,prairie naturelle,soja,sorgho,stade foot,terre,tournesol,trefle,trefle+luzerne,verger,vigne,cereale,cereale+colza,cereale+prairie,chanvre,bande enherbe,colza,culture,eau,feverole\'"))
 dbSendQuery(con, paste0("COMMENT ON COLUMN temporaire.",utilisateur,"_t_hab_dv_hdv.hdv_surf_bois IS 'bois,haie,friche\'"))
 #dbSendQuery(con, "COMMENT ON COLUMN temporaire.",utilisateur,"_t_hab_dv_hdv.hdv_surf_buffer IS 'surface du buffer\'")
 
