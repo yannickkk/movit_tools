@@ -318,6 +318,8 @@ if (length(enl) > 0) {dat[-which(dat[,cap] %in% enl),c("pos_x_corrige","pos_y_co
     for (i in 1:length(unique(datker$cap))){    
     datkerb<-datkers[[i]]
     coordinates(datkerb)=~pos_x_corrige+pos_y_corrige
+    wkt <- sf::st_crs(2154)[[2]]
+    crs.L93<-sp::CRS(wkt)
     proj4string(datkerb) <- crs.L93
     ker<-kernelUD(datkerb, h = "href", kern = "bivnorm", extent = 5, grid= 500)
     vert<-getverticeshr(ker, kerval)
