@@ -360,7 +360,7 @@ dbSendQuery(con, paste0("drop table if exists temporaire.",utilisateur,"_t_hab_d
 dbSendQuery(con, paste0("create table temporaire.",utilisateur,"_t_hab_dv_hdv AS SELECT hdv_id, names AS hdv_cap_bague, hdv_year, hdv_area, geom_u as hdv_geom from temporaire.",utilisateur,"_dv_u"))
 dbSendQuery(con, paste0("ALTER TABLE temporaire.",utilisateur,"_t_hab_dv_hdv ADD CONSTRAINT t_hab_dv_hdv_graphpkey PRIMARY KEY (hdv_id);"))
 dbSendQuery(con, paste0("drop INDEX if exists temporaire.",utilisateur,"_t_hab_dv_hdv_graphgeom_gist cascade;"))
-dbSendQuery(con, paste0("CREATE INDEX t_hab_dv_hdv_graphgeom_gist ON temporaire.",utilisateur,"_t_hab_dv_hdv USING gist (hdv_geom);"))
+dbSendQuery(con, paste0("CREATE INDEX if not exists t_hab_dv_hdv_graphgeom_gist ON temporaire.",utilisateur,"_t_hab_dv_hdv USING gist (hdv_geom);"))
 
 
 dbSendQuery(con, paste0("ALTER TABLE temporaire.",utilisateur,"_t_hab_dv_hdv DROP COLUMN IF EXISTS hdv_surf_humain"))   
@@ -452,9 +452,9 @@ dbSendQuery(con, paste0("UPDATE temporaire.",utilisateur,"_t_hab_dv_hdv_graph_gr
 dbSendQuery(con, paste0("UPDATE temporaire.",utilisateur,"_t_hab_dv_hdv_graph_grps SET grd_cat = 'culture' where grd_cat in ('jachere','legumineuse','lin','luzerne','maraichage','moutarde','oleoproteagineux','parc arbore','pelouse','polygonacee','prairie','prairie artificielle','prairie naturelle','soja','sorgho','stade foot','terre','tournesol','trefle','trefle+luzerne','verger','vigne','cereale','cereale+colza','cereale+prairie','chanvre','bande enherbe','colza','culture','feverole');"))
 dbSendQuery(con, paste0("UPDATE temporaire.",utilisateur,"_t_hab_dv_hdv_graph_grps SET grd_cat = 'bois' where grd_cat in ('bois','haie','friche');"))
 dbSendQuery(con, paste0("DROP INDEX IF EXISTS t_hab_dv_hdv_graph_grps_index1; DROP INDEX IF EXISTS t_hab_dv_hdv_graph_grps_index2;"))
-dbSendQuery(con, paste0("CREATE INDEX t_hab_dv_hdv_graph_grps_index1 ON temporaire.",utilisateur,"_t_hab_dv_hdv_graph_grps USING gist (geom); CREATE INDEX t_hab_dv_hdv_graph_grps_index2 ON temporaire.",utilisateur,"_t_hab_dv_hdv_graph_grps (grd_cat);"))
+dbSendQuery(con, paste0("CREATE INDEX  if not exists t_hab_dv_hdv_graph_grps_index1 ON temporaire.",utilisateur,"_t_hab_dv_hdv_graph_grps USING gist (geom); CREATE INDEX  if not exists t_hab_dv_hdv_graph_grps_index2 ON temporaire.",utilisateur,"_t_hab_dv_hdv_graph_grps (grd_cat);"))
 dbSendQuery(con, paste0("DROP INDEX IF EXISTS t_hab_dv_hdv_graph_index1;DROP INDEX IF EXISTS t_hab_dv_hdv_graph_grps_index2;"))
-dbSendQuery(con, paste0("CREATE INDEX t_hab_dv_hdv_graph_index1 ON temporaire.",utilisateur,"_t_hab_dv_hdv_graph USING gist (geom);CREATE INDEX t_hab_dv_hdv_graph_grps_index2 ON temporaire.",utilisateur,"_t_hab_dv_hdv_graph (par_grd_cat);"))
+dbSendQuery(con, paste0("CREATE INDEX  if not exists t_hab_dv_hdv_graph_index1 ON temporaire.",utilisateur,"_t_hab_dv_hdv_graph USING gist (geom);CREATE INDEX  if not exists t_hab_dv_hdv_graph_grps_index2 ON temporaire.",utilisateur,"_t_hab_dv_hdv_graph (par_grd_cat);"))
 
 #####"pourcentage de couverture de l'assolement
 dbSendQuery(con, paste0("ALTER TABLE temporaire.",utilisateur,"_t_hab_dv_hdv add column hdv_hab_dv_percentcov text"))
