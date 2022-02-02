@@ -138,7 +138,7 @@ cpos_prog4heure, cpos_prog3heure, cpos_prog1heure, cpos_prog10minutes,
 date_capture, pos_distance_route, pos_distance_bois, pos_distance_bati,
 pos_distance_haie, pos_localisation_par_id, par_os, par_grd_cat, par_annee 
 FROM temporaire.",utilisateur,"_t_select_loc 
-WHERE concat(ani_etiq,'_', cap_annee_suivi) IN (SELECT concat(ani_etiq,'_', cap_annee_suivi) as etiq_an FROM temporaire.",utilisateur,"_t_select_loc group by etiq_an having count(extract(day from cpos_date)) > ",jours_suivi,") AND ani_etiq in ",vecteur_cap_date,";"))
+WHERE concat(ani_etiq,'_', cap_annee_suivi) IN (SELECT concat(ani_etiq,'_', cap_annee_suivi) as etiq_an FROM temporaire.",utilisateur,"_t_select_loc group by etiq_an having count(extract(day from cpos_date)) > ",jours_suivi,") AND ani_etiq in ",v2db(vecteur_cap_date),";"))
 }
   
   dbSendQuery(con, paste0("DROP TABLE IF EXISTS temporaire.",utilisateur,"_t_select_loc;"))
