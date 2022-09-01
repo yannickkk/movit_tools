@@ -113,7 +113,7 @@ dbSendQuery(con, paste0("ALTER TABLE temporaire.t_land_hr_lhr  ALTER COLUMN lhr_
 
 ######Create a graphic table of the intersect to check visualy the former results and calculate further landscpae metrics
 dbSendQuery(con, paste0("DROP TABLE IF EXISTS temporaire.t_land_hr_graph_lhrg;"))
-dbSendQuery(con, paste0("CREATE TABLE temporaire.t_land_hr_graph_lhrg as select lhr_id as lhrg_id, lhr_cap_bague as lhrg_cap_bague, lhr_year as lhrg_year, par_grd_cat, ST_Intersection(lhr_geom, tr_parcellaire_par.geom) as geom from \"analyse\".t_land_hr_lhr, tr_parcellaire_par where tr_parcellaire_par.par_annee = lhr_year::integer and ST_Intersects(lhr_geom, tr_parcellaire_par.geom)"))
+dbSendQuery(con, paste0("CREATE TABLE temporaire.t_land_hr_graph_lhrg as select lhr_id as lhrg_id, lhr_cap_bague as lhrg_cap_bague, lhr_year as lhrg_year, par_grd_cat, ST_Intersection(lhr_geom, tr_parcellaire_par.geom) as geom from temporaire.t_land_hr_lhr, tr_parcellaire_par where tr_parcellaire_par.par_annee = lhr_year::integer and ST_Intersects(lhr_geom, tr_parcellaire_par.geom)"))
 
 #compare home ranges contain in to_check data.frame to see if the differences correspond to missing grd_cat (ie 'hors zone','non renseigne'))
 #to do that you have to display in Qgis t_hab_dv_hr_graph and filter "lhr_id" = to_check[1,"lhr_id"] and t_parcellaire_par ("par_annee" = to_check[1,"lhr_year"] and "par_grd_cat" in ('hors zone','non renseigne'))
