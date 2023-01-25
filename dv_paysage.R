@@ -354,7 +354,7 @@ dbSendQuery(con, paste0("create table temporaire.",utilisateur,"_dv_u as select 
 dbSendQuery(con, paste0("drop table if exists temporaire.",utilisateur,"_t_hab_dv_hdv;"))
 dbSendQuery(con, paste0("ALTER TABLE temporaire.",utilisateur,"_dv_u ADD COLUMN hdv_id serial"))
 dbSendQuery(con, paste0("ALTER TABLE temporaire.",utilisateur,"_dv_u ADD COLUMN id serial"))
-dbSendQuery(con, paste0("ALTER TABLE temporaire.",utilisateur,"_dv_u ADD COLUMN hdv_area serial"))
+dbSendQuery(con, paste0("ALTER TABLE temporaire.",utilisateur,"_dv_u ADD COLUMN hdv_area bigint"))
 dbSendQuery(con, paste0("update temporaire.",utilisateur,"_dv_u set hdv_area = round(ST_AREA (geom_u))"))
 dbSendQuery(con, paste0("drop table if exists temporaire.",utilisateur,"_t_hab_dv_hdv;"))
 dbSendQuery(con, paste0("create table temporaire.",utilisateur,"_t_hab_dv_hdv AS SELECT hdv_id, names AS hdv_cap_bague, hdv_year, hdv_area, geom_u as hdv_geom from temporaire.",utilisateur,"_dv_u"))
