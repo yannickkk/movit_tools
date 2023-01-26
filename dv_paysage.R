@@ -429,17 +429,17 @@ dbSendQuery(con, paste0("CREATE TABLE temporaire.",utilisateur,"_t_hab_dv_hdv_gr
 ######on cree une couche graphique qui regroupe les geom des grd_cat en humain, culture, bois 
 dbSendQuery(con, paste0("DROP TABLE IF EXISTS temporaire.",utilisateur,"_t_hab_dv_hdv_graph_grps ;"))
 dbSendQuery(con, paste0("CREATE TABLE temporaire.",utilisateur,"_t_hab_dv_hdv_graph_grps AS (
-                       SELECT hdv_id, hdv_cap_bague, hdv_year, MAX(par_grd_cat) AS grd_cat, ST_Union(ST_MakeValid(ST_SnapToGrid(geom, 0.0001))) as geom --ST_Union(geom) AS geom --ST_Collect(geom) AS geom--
+                       SELECT hdv_id, hdv_cap_bague, hdv_year, MAX(par_grd_cat) AS grd_cat, ST_MemUnion(ST_MakeValid(ST_SnapToGrid(geom, 0.0001))) as geom --ST_Union(geom) AS geom --ST_Collect(geom) AS geom--
                        FROM temporaire.",utilisateur,"_t_hab_dv_hdv_graph
                        WHERE par_grd_cat in ('bati','chemin','chemin prive','dependance ferme','depot chantier','enclos','jardin','parking','route')
                        GROUP BY hdv_id, hdv_cap_bague, hdv_year
                        UNION
-                       SELECT hdv_id, hdv_cap_bague, hdv_year, MAX(par_grd_cat) AS grd_cat, ST_Union(ST_MakeValid(ST_SnapToGrid(geom, 0.0001))) as geom  --ST_Union(geom) AS geom --ST_Collect(geom) AS geom --
+                       SELECT hdv_id, hdv_cap_bague, hdv_year, MAX(par_grd_cat) AS grd_cat, ST_MemUnion(ST_MakeValid(ST_SnapToGrid(geom, 0.0001))) as geom  --ST_Union(geom) AS geom --ST_Collect(geom) AS geom --
                        FROM temporaire.",utilisateur,"_t_hab_dv_hdv_graph
                        WHERE par_grd_cat in ('jachere','legumineuse','lin','luzerne','maraichage','moutarde','oleoproteagineux','parc arbore','pelouse','polygonacee','prairie','prairie artificielle','prairie naturelle','soja','sorgho','stade foot','terre','tournesol','trefle','trefle+luzerne','verger','vigne','cereale','cereale+colza','cereale+prairie','chanvre','bande enherbe','colza','culture','feverole')
                        GROUP BY hdv_id, hdv_cap_bague, hdv_year
                        UNION
-                       SELECT hdv_id, hdv_cap_bague, hdv_year, MAX(par_grd_cat) AS grd_cat,   ST_Union(ST_MakeValid(ST_SnapToGrid(geom, 0.0001))) as geom   --ST_Union(geom) AS geom --ST_Collect(geom) AS geom --
+                       SELECT hdv_id, hdv_cap_bague, hdv_year, MAX(par_grd_cat) AS grd_cat,   ST_MemUnion(ST_MakeValid(ST_SnapToGrid(geom, 0.0001))) as geom   --ST_Union(geom) AS geom --ST_Collect(geom) AS geom --
                        FROM temporaire.",utilisateur,"_t_hab_dv_hdv_graph
                        WHERE par_grd_cat in ('bois','haie','friche')
                        GROUP BY hdv_id, hdv_cap_bague, hdv_year
@@ -486,7 +486,7 @@ dbSendQuery(con, paste0("alter table temporaire.",utilisateur,"_dv_u rename to "
 }  
   
 
-####Grant privilege to utilisateurs######
+####Grant privilege to users######
 schem<- c("analyse")
 for (j in 1:length(schem)){
   tab<-dbGetQuery(con,paste0("SELECT table_name
